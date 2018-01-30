@@ -19,24 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] != 'POST'){
 $a = $_POST['text1'];
 $b = $_POST['text2'];
 
-function getCommonWords($a,$b)
-{
-    $result=[];
 
-    $ar1 = explode(' ', $a);
-    $ar2 = explode(' ', $b);
-
-    foreach ($ar1 as $word){
-        if (in_array($word, $ar2)){
-            $result[] = $word;
-        }
-    }
-    return $result;
-}
-print_r(getCommonWords($a,$b));
-
+print_r(array_intersect($a,$b));
 
 /*
+
+@see: http://php.net/manual/ru/function.array-intersect.php
+
  1. Создать форму с двумя элементами textarea. При отправке формы скрипт должен выдавать только те слова,
 которые есть и в первом и во втором поле ввода. Реализацию это логики необходимо поместить
 в функцию getCommonWords($a, $b), которая будет возвращать массив с общими словами.
